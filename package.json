@@ -1,0 +1,22 @@
+{
+    "name": "package",
+    "version": "1.0.0",
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Valodzina/Virtual_Keyboard_RSS.git"
+    },
+    "author": "Valodzina",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Valodzina/Virtual_Keyboard_RSS/issues"
+    },
+    "homepage": "https://github.com/Valodzina/Virtual_Keyboard_RSS#readme",
+    "devDependencies": {
+        "eslint": "^8.14.0"
+    }
+}

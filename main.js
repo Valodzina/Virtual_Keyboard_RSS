@@ -234,7 +234,7 @@ const ENAlphabet = "`qwertyuiop[]asdfghjkl;'zxcvbnm,./"
 
 let CapsIsActive = false;
 let AltShiftPressed = false;
-console.log(sessionStorage.getItem('lang'))
+// console.log(sessionStorage.getItem('lang'))
 if (sessionStorage.getItem('lang') !== null) {
     if (sessionStorage.getItem('lang') == 'ru') {
         language = 'en';
@@ -249,24 +249,20 @@ if (sessionStorage.getItem('lang') !== null) {
 
 if (buttons.length > 0) {
     buttons.forEach(btn => {
-        btn.addEventListener("mousedown", function(e) {
-
-
+        btn.addEventListener("mousedown", () => {
 
             if (!btn.classList.contains('CapsLock')) {
                 btn.classList.add('active');
             }
 
-
             if (btn.classList.contains('simple')) {
                 textarea.value = textarea.value + btn.querySelector('p').textContent;
             }
 
-
-
             if (btn.classList.contains('Space')) {
                 textarea.value = textarea.value + " ";
             }
+
             if (btn.classList.contains('Backspace')) {
                 textarea.value = textarea.value.slice(0, textarea.value.length - 1);
             }
@@ -284,7 +280,6 @@ if (buttons.length > 0) {
                 CapsIsActive = !CapsIsActive;
 
             }
-
 
             if (btn.classList.contains('ShiftLeft')) {
 
@@ -319,7 +314,7 @@ if (buttons.length > 0) {
             }
 
         });
-        btn.addEventListener('mouseup', function(e) {
+        btn.addEventListener('mouseup', () => {
             if (!btn.classList.contains('CapsLock')) {
                 setTimeout(function() {
                     btn.classList.remove('active');
@@ -338,7 +333,7 @@ if (buttons.length > 0) {
 
 }
 
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', (event) => {
     console.log(event.code);
     if (event.code !== 'CapsLock') {
         if (document.querySelector('.' + event.code) !== null)
@@ -421,7 +416,7 @@ document.addEventListener('keydown', function(event) {
 
 
 
-document.addEventListener('keyup', function(event) {
+document.addEventListener('keyup', (event) => {
     if (event.code !== 'CapsLock') {
         if (document.querySelector('.' + event.code) !== null)
             document.querySelector('.' + event.code).classList.remove('active')
