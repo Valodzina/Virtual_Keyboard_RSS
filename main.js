@@ -3,6 +3,8 @@
 // 2. Multi-line strings
 // 3. Arrow Functions
 
+
+
 let virtual = document.createElement('div');
 virtual.innerHTML = `<div>
 <div class="row">
@@ -234,7 +236,8 @@ const ENAlphabet = "`qwertyuiop[]asdfghjkl;'zxcvbnm,./"
 
 let CapsIsActive = false;
 let AltShiftPressed = false;
-// console.log(sessionStorage.getItem('lang'))
+let allowed = true;
+
 if (sessionStorage.getItem('lang') !== null) {
     if (sessionStorage.getItem('lang') == 'ru') {
         language = 'en';
@@ -375,16 +378,19 @@ document.addEventListener('keydown', (event) => {
         AltShiftPressed = true;
 
     } else {
-        if (event.code == 'ShiftLeft') {
-            event.preventDefault();
-            CapsLockLetters();
-            hideDigits()
+        if (event.code == 'ShiftLeft' || event.code == 'ShiftRight') {
+            if (event.repeat != undefined) {
+                allowed = !event.repeat;
+            }
+            if (allowed) {
+                allowed = false;
+                event.preventDefault();
+                CapsLockLetters();
+                hideDigits()
+            }
+
         }
-        if (event.code == 'ShiftRight') {
-            event.preventDefault();
-            CapsLockLetters();
-            hideDigits()
-        }
+
 
     }
     if (event.code == 'MetaLeft' || event.code == 'AltLeft' || event.code == 'AltRight') {
@@ -427,6 +433,7 @@ document.addEventListener('keyup', (event) => {
         returnDigits();
     } else if (event.code == 'ShiftLeft' || event.code == 'ShiftRight') {
         AltShiftPressed = false;
+        allowed = true;
     }
 
 
